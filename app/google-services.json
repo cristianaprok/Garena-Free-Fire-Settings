@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "678631948371",
+    "project_id": "ff-settings-d286d",
+    "storage_bucket": "ff-settings-d286d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678631948371:android:492dda7c9225209d10c6a6",
+        "android_client_info": {
+          "package_name": "com.jvmfrog.ffsettings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678631948371-i89je2eo2lecfrffjb6b9p3m9agvgg4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPP08iUg-o4A2GPb77aBJKAQacYUCLuXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678631948371-i89je2eo2lecfrffjb6b9p3m9agvgg4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
