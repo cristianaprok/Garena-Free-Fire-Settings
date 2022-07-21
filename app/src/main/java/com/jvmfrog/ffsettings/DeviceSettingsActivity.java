@@ -14,6 +14,9 @@ public class DeviceSettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDeviceSettingsBinding.inflate(getLayoutInflater());
+
+
+
         setContentView(binding.getRoot());
     }
 }

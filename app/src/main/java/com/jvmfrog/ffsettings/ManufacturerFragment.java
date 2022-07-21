@@ -29,12 +29,12 @@ public class ManufacturerFragment extends Fragment {
 
         binding.samsung.setOnClickListener(view -> {
             finalBundle.putString("device", "samsung");
-            FragmentUtils.changeFragment(getActivity(), new DevicesFragment(), R.id.frame, finalBundle);
+            FragmentUtils.changeFragmentWithBackStack(getActivity(), new DevicesFragment(), R.id.frame, "back", finalBundle);
         });
 
         binding.iphone.setOnClickListener(view -> {
             finalBundle.putString("device", "iphone");
-            FragmentUtils.changeFragment(getActivity(), new DevicesFragment(), R.id.frame, finalBundle);
+            FragmentUtils.changeFragmentWithBackStack(getActivity(), new DevicesFragment(), R.id.frame, "back", finalBundle);
         });
 
         return binding.getRoot();

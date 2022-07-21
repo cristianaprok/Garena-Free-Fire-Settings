@@ -39,7 +39,7 @@ public class DevicesFragment extends Fragment {
 
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         Query query = rootRef.collection(finalBundle.getString("device"))
-                .orderBy("device_name", Query.Direction.ASCENDING);
+                .orderBy("device_name", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<ParamsModel> options =
                 new FirestoreRecyclerOptions.Builder<ParamsModel>()

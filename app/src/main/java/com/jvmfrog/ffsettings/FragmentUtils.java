@@ -19,6 +19,17 @@ public class FragmentUtils {
         //defaultFragmentTranslation(activity, to, frameId).commit();
     }
 
+    public static void changeFragmentWithBackStack(FragmentActivity activity, Fragment to, int frameId, String backstack, Bundle bundle) {
+        to.setArguments(bundle);
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(frameId, to);
+        transaction.addToBackStack(backstack);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.commit();
+        //defaultFragmentTranslation(activity, to, frameId).commit();
+    }
+
     private static FragmentTransaction defaultFragmentTranslation(FragmentActivity activity, Fragment to, int frameId) {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
