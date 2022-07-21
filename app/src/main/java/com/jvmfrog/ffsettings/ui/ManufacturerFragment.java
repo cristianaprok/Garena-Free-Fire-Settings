@@ -1,4 +1,4 @@
-package com.jvmfrog.ffsettings;
+package com.jvmfrog.ffsettings.ui;
 
 import android.os.Bundle;
 
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jvmfrog.ffsettings.utils.FragmentUtils;
+import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
 
 public class ManufacturerFragment extends Fragment {

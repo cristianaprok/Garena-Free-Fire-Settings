@@ -1,22 +1,24 @@
 package com.jvmfrog.ffsettings;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.jvmfrog.ffsettings.ui.DeviceSettingsFragment;
+import com.jvmfrog.ffsettings.utils.FragmentUtils;
 
 public class ManufacturersAdapter extends FirestoreRecyclerAdapter<ParamsModel, ManufacturersAdapter.holder> {
 
     private Context context;
-    private View.OnClickListener onClickListener;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -32,6 +34,17 @@ public class ManufacturersAdapter extends FirestoreRecyclerAdapter<ParamsModel, 
     @Override
     protected void onBindViewHolder(@NonNull ManufacturersAdapter.holder holder, int position, @NonNull ParamsModel model) {
         holder.device_name.setText(model.getDevice_name());
+
+        holder.itemView.setOnClickListener(v -> {
+            Bundle finalBundle = new Bundle();
+            finalBundle.putFloat("review", model.getReview());
+            finalBundle.putFloat("collimator", model.getCollimator());
+            finalBundle.putFloat("x2_scope", model.getX2_scope());
+            finalBundle.putFloat("x4_scope", model.getX4_scope());
+            finalBundle.putFloat("sniper_scope", model.getSniper_scope());
+            finalBundle.putFloat("free_review", model.getFree_review());
+            FragmentUtils.changeFragmentWithBackStack((FragmentActivity) v.getContext(), new DeviceSettingsFragment(), R.id.frame, "back", finalBundle);
+        });
     }
 
     @NonNull

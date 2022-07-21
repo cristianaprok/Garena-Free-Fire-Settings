@@ -1,15 +1,12 @@
-package com.jvmfrog.ffsettings;
+package com.jvmfrog.ffsettings.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
+import com.jvmfrog.ffsettings.utils.FragmentUtils;
+import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

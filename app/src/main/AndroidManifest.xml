@@ -16,10 +16,7 @@
         android:theme="@style/Theme.FFSettings"
         tools:targetApi="31">
         <activity
-            android:name=".DeviceSettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.jvmfrog.ffsettings;
+package com.jvmfrog.ffsettings.ui;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.jvmfrog.ffsettings.ManufacturersAdapter;
+import com.jvmfrog.ffsettings.ParamsModel;
 import com.jvmfrog.ffsettings.databinding.FragmentDevicesBinding;
 
 public class DevicesFragment extends Fragment {
@@ -47,7 +49,7 @@ public class DevicesFragment extends Fragment {
                         .build();
 
         binding.recview.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        manufacturersAdapter = new ManufacturersAdapter(options, getContext());
+        manufacturersAdapter = new ManufacturersAdapter(options, getActivity());
         binding.recview.setAdapter(manufacturersAdapter);
 
         return binding.getRoot();
