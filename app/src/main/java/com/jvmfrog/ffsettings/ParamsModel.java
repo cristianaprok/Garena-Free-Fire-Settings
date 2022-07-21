@@ -4,14 +4,11 @@ public class ParamsModel {
 
     public ParamsModel() {};
 
-    private String manufacturers, manufacturer, deviceModel, deviceName;
+    private String device_name;
     private int dpi, review, collimator, x2_scope, x4_scope, sniper_scope, free_review;
 
-    public ParamsModel(String manufacturers, String manufacturer, String deviceModel, String deviceName, int dpi, int review, int collimator, int x2_scope, int x4_scope, int sniper_scope, int free_review) {
-        this.manufacturers = manufacturers;
-        this.manufacturer = manufacturer;
-        this.deviceModel = deviceModel;
-        this.deviceName = deviceName;
+    public ParamsModel(String device_name, int dpi, int review, int collimator, int x2_scope, int x4_scope, int sniper_scope, int free_review) {
+        this.device_name = device_name;
         this.dpi = dpi;
         this.review = review;
         this.collimator = collimator;
@@ -21,36 +18,12 @@ public class ParamsModel {
         this.free_review = free_review;
     }
 
-    public String getManufacturers() {
-        return manufacturers;
+    public String getDevice_name() {
+        return device_name;
     }
 
-    public void setManufacturers(String manufacturers) {
-        this.manufacturers = manufacturers;
-    }
-
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public String getDeviceModel() {
-        return deviceModel;
-    }
-
-    public void setDeviceModel(String deviceModel) {
-        this.deviceModel = deviceModel;
-    }
-
-    public String getDeviceName() {
-        return deviceName;
-    }
-
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
+    public void setDevice_name(String device_name) {
+        this.device_name = device_name;
     }
 
     public int getDpi() {

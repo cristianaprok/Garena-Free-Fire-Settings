@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManufacturerFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Выберите из списка своего производителя устройства"
+            android:textSize="24sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/samsung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Samsung"
+            android:textSize="24sp"
+            style="@style/Widget.Material3.Button.ElevatedButton"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/iphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="iPhone"
+            android:textSize="24sp"
+            style="@style/Widget.Material3.Button.ElevatedButton"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/xiaomi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Xiaomi"
+            android:textSize="24sp"
+            style="@style/Widget.Material3.Button.ElevatedButton"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/redmi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Redmi"
+            android:textSize="24sp"
+            style="@style/Widget.Material3.Button.ElevatedButton"/>
+    </LinearLayout>
+
+</FrameLayout>
