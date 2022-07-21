@@ -30,18 +30,17 @@ public class MainActivity extends AppCompatActivity {
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        binding.recview.setLayoutManager(new LinearLayoutManager(this));
-
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-        Query query = rootRef.collection("categories")
-                .orderBy("deviceName", Query.Direction.ASCENDING);
+        Query query = rootRef.collection("manufacturers")
+                .orderBy("manufacturer", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<ParamsModel> options =
                 new FirestoreRecyclerOptions.Builder<ParamsModel>()
                         .setQuery(query, ParamsModel.class)
                         .build();
 
-        devicesAdapter = new DevicesAdapter(options);
+        binding.recview.setLayoutManager(new LinearLayoutManager(this));
+        devicesAdapter = new DevicesAdapter(options, this);
         binding.recview.setAdapter(devicesAdapter);
     }
 

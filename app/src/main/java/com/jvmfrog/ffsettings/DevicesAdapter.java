@@ -1,5 +1,6 @@
 package com.jvmfrog.ffsettings;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.holder> {
 
-    private View view;
+    private Context context;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -22,16 +23,17 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
      *
      * @param options
      */
-    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options) {
+    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
         super(options);
+        context = this.context;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull DevicesAdapter.holder holder, int position, @NonNull ParamsModel model) {
-        holder.device_name.setText(model.getDeviceName());
+        holder.device_name.setText(model.getManufacturer());
 
         holder.itemView.setOnClickListener(view -> {
-            Toast.makeText(view.getContext(), model.getDeviceName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), model.getManufacturer(), Toast.LENGTH_SHORT).show();
         });
     }
 

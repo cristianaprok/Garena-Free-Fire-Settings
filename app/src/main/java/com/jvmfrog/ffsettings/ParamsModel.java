@@ -4,11 +4,12 @@ public class ParamsModel {
 
     public ParamsModel() {};
 
-    private String categories, deviceModel, deviceName;
+    private String manufacturers, manufacturer, deviceModel, deviceName;
     private int dpi, review, collimator, x2_scope, x4_scope, sniper_scope, free_review;
 
-    public ParamsModel(String categories, String deviceModel, String deviceName, int dpi, int review, int collimator, int x2_scope, int x4_scope, int sniper_scope, int free_review) {
-        this.categories = categories;
+    public ParamsModel(String manufacturers, String manufacturer, String deviceModel, String deviceName, int dpi, int review, int collimator, int x2_scope, int x4_scope, int sniper_scope, int free_review) {
+        this.manufacturers = manufacturers;
+        this.manufacturer = manufacturer;
         this.deviceModel = deviceModel;
         this.deviceName = deviceName;
         this.dpi = dpi;
@@ -20,12 +21,20 @@ public class ParamsModel {
         this.free_review = free_review;
     }
 
-    public String getCategories() {
-        return categories;
+    public String getManufacturers() {
+        return manufacturers;
     }
 
-    public void setCategories(String categories) {
-        this.categories = categories;
+    public void setManufacturers(String manufacturers) {
+        this.manufacturers = manufacturers;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public String getDeviceModel() {
