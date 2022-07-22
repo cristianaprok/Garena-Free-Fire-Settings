@@ -1,4 +1,4 @@
-package com.jvmfrog.ffsettings;
+package com.jvmfrog.ffsettings.model;
 
 public class ParamsModel {
 

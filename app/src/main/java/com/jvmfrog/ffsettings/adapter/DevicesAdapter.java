@@ -1,4 +1,4 @@
-package com.jvmfrog.ffsettings;
+package com.jvmfrog.ffsettings.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.jvmfrog.ffsettings.R;
+import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.ui.DeviceSettingsFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 
-public class ManufacturersAdapter extends FirestoreRecyclerAdapter<ParamsModel, ManufacturersAdapter.holder> {
+public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.holder> {
 
     private Context context;
 
@@ -26,13 +28,13 @@ public class ManufacturersAdapter extends FirestoreRecyclerAdapter<ParamsModel, 
      *
      * @param options
      */
-    public ManufacturersAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
+    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
         super(options);
         context = this.context;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ManufacturersAdapter.holder holder, int position, @NonNull ParamsModel model) {
+    protected void onBindViewHolder(@NonNull DevicesAdapter.holder holder, int position, @NonNull ParamsModel model) {
         holder.device_name.setText(model.getDevice_name());
 
         holder.itemView.setOnClickListener(v -> {
@@ -49,7 +51,7 @@ public class ManufacturersAdapter extends FirestoreRecyclerAdapter<ParamsModel, 
 
     @NonNull
     @Override
-    public ManufacturersAdapter.holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DevicesAdapter.holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item, parent, false);
 

@@ -3,19 +3,24 @@ package com.jvmfrog.ffsettings.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jvmfrog.ffsettings.adapter.ManufacturersAdapter;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
 
+import java.util.ArrayList;
+
 public class ManufacturerFragment extends Fragment {
 
     private FragmentManufacturerBinding binding;
-    private View.OnClickListener onClickListener;
+    private ArrayList<String> arrayList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,15 +34,16 @@ public class ManufacturerFragment extends Fragment {
 
         Bundle finalBundle = new Bundle();
 
-        binding.samsung.setOnClickListener(view -> {
-            finalBundle.putString("device", "samsung");
-            FragmentUtils.changeFragmentWithBackStack(getActivity(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-        });
+        arrayList = new ArrayList<String>();
+        arrayList.add("Samsung");
+        arrayList.add("iPhone");
+        arrayList.add("Xiaomi");
+        arrayList.add("Redmi");
 
-        binding.iphone.setOnClickListener(view -> {
-            finalBundle.putString("device", "iphone");
-            FragmentUtils.changeFragmentWithBackStack(getActivity(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-        });
+        LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+        binding.recview.setLayoutManager(layoutManager);
+        ManufacturersAdapter adapter = new ManufacturersAdapter(arrayList, getActivity());
+        binding.recview.setAdapter(adapter);
 
         return binding.getRoot();
     }

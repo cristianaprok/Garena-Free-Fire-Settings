@@ -12,14 +12,14 @@ import android.view.ViewGroup;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.jvmfrog.ffsettings.ManufacturersAdapter;
-import com.jvmfrog.ffsettings.ParamsModel;
+import com.jvmfrog.ffsettings.adapter.DevicesAdapter;
+import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.databinding.FragmentDevicesBinding;
 
 public class DevicesFragment extends Fragment {
 
     private FragmentDevicesBinding binding;
-    private ManufacturersAdapter manufacturersAdapter;
+    private DevicesAdapter devicesAdapter;
 
     public DevicesFragment() {
         // Required empty public constructor
@@ -49,8 +49,8 @@ public class DevicesFragment extends Fragment {
                         .build();
 
         binding.recview.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        manufacturersAdapter = new ManufacturersAdapter(options, getActivity());
-        binding.recview.setAdapter(manufacturersAdapter);
+        devicesAdapter = new DevicesAdapter(options, getActivity());
+        binding.recview.setAdapter(devicesAdapter);
 
         return binding.getRoot();
     }
@@ -58,13 +58,13 @@ public class DevicesFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        manufacturersAdapter.startListening();
+        devicesAdapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if(manufacturersAdapter != null)
-            manufacturersAdapter.stopListening();
+        if(devicesAdapter != null)
+            devicesAdapter.stopListening();
     }
 }
