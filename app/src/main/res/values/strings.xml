@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">FF Settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="review">Review</string>
+    <string name="collimator">Collimator</string>
+    <string name="x2_scope">x2 Scope</string>
+    <string name="x4_scope">x4 Scope</string>
+    <string name="sniper_scope">Sniper Scope</string>
+    <string name="free_review">Free Review</string>
+    <string name="dpi">DPI</string>
 </resources>

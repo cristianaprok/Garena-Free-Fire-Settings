@@ -28,17 +28,17 @@ public class DeviceSettingsFragment extends Fragment {
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());
 
-        binding.textViewReview.setText("Review: " + (int) finalBundle.getFloat("review"));
+        binding.textViewReview.setText(getString(R.string.review) + ":" + " " + (int) finalBundle.getFloat("review"));
         binding.sliderReview.setValue(finalBundle.getFloat("review"));
-        binding.textViewCollimator.setText("Collimator: " + (int) finalBundle.getFloat("collimator"));
+        binding.textViewCollimator.setText(getString(R.string.collimator) + ":" + " " + (int) finalBundle.getFloat("collimator"));
         binding.sliderCollimator.setValue(finalBundle.getFloat("collimator"));
-        binding.textViewX2Scope.setText("x2 Scope: " + (int) finalBundle.getFloat("x2_scope"));
+        binding.textViewX2Scope.setText(getString(R.string.x2_scope) + ":" + " " + (int) finalBundle.getFloat("x2_scope"));
         binding.sliderX2Scope.setValue(finalBundle.getFloat("x2_scope"));
-        binding.textViewX4Scope.setText("x4 Scope: " + (int) finalBundle.getFloat("x4_scope"));
+        binding.textViewX4Scope.setText(getString(R.string.x4_scope) + ":" + " " + (int) finalBundle.getFloat("x4_scope"));
         binding.sliderX4Scope.setValue(finalBundle.getFloat("x4_scope"));
-        binding.textViewSniperScope.setText("Sniper Scope: " + (int) finalBundle.getFloat("sniper_scope"));
+        binding.textViewSniperScope.setText(getString(R.string.sniper_scope) + ":" + " " + (int) finalBundle.getFloat("sniper_scope"));
         binding.sliderSniperScope.setValue(finalBundle.getFloat("sniper_scope"));
-        binding.textViewFreeReview.setText("Free Review: " + (int) finalBundle.getFloat("free_review"));
+        binding.textViewFreeReview.setText(getString(R.string.free_review) + ":" + " " + (int) finalBundle.getFloat("free_review"));
         binding.sliderFreeReview.setValue(finalBundle.getFloat("free_review"));
 
         return binding.getRoot();

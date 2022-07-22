@@ -30,6 +30,7 @@
     <color name="md_theme_light_inversePrimary">#ADC6FF</color>
     <color name="md_theme_light_surfaceTint">#005AC1</color>
     <color name="md_theme_light_surfaceTintColor">#005AC1</color>
+
     <color name="md_theme_dark_primary">#ADC6FF</color>
     <color name="md_theme_dark_onPrimary">#002E69</color>
     <color name="md_theme_dark_primaryContainer">#004494</color>
