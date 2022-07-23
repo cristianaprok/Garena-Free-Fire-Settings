@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jvmfrog.ffsettings.adapter.ManufacturersAdapter;
+import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
@@ -48,6 +49,10 @@ public class ManufacturerFragment extends Fragment {
         binding.recview.setLayoutManager(layoutManager);
         ManufacturersAdapter adapter = new ManufacturersAdapter(arrayList, getActivity());
         binding.recview.setAdapter(adapter);
+
+        binding.googleFormBtn.setOnClickListener(view -> {
+            new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary);
+        });
 
         return binding.getRoot();
     }
