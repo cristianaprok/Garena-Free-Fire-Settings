@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FF Настройки</string>
+
+    <string name="review">Обзор</string>
+    <string name="collimator">Коллиматор</string>
+    <string name="x2_scope">x2 Прицел</string>
+    <string name="x4_scope">x4 Прицел</string>
+    <string name="sniper_scope">Снайперский прицел</string>
+    <string name="free_review">Свободный Обзор</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Кнопка Огня</string>
+
+    <string name="dont_have_your_phone_model">Нету модели вашего телефона?</string>
+    <string name="then_click_here">Тогда жми сюда!</string>
+    <string name="copy">Скопировать</string>
+</resources>

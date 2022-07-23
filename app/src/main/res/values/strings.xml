@@ -8,4 +8,9 @@
     <string name="sniper_scope">Sniper Scope</string>
     <string name="free_review">Free Review</string>
     <string name="dpi">DPI</string>
+    <string name="fire_button">Fire Button</string>
+
+    <string name="dont_have_your_phone_model">Don\'t have your phone model?</string>
+    <string name="then_click_here">Then click here</string>
+    <string name="copy">Copy Settings</string>
 </resources>

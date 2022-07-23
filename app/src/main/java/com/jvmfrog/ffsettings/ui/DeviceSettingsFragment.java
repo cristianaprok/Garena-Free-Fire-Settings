@@ -28,6 +28,7 @@ public class DeviceSettingsFragment extends Fragment {
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());
 
+        binding.textViewDPI.setText(getString(R.string.dpi) + ":" + " " + (int) finalBundle.getFloat("dpi"));
         binding.textViewReview.setText(getString(R.string.review) + ":" + " " + (int) finalBundle.getFloat("review"));
         binding.sliderReview.setValue(finalBundle.getFloat("review"));
         binding.textViewCollimator.setText(getString(R.string.collimator) + ":" + " " + (int) finalBundle.getFloat("collimator"));
@@ -40,6 +41,8 @@ public class DeviceSettingsFragment extends Fragment {
         binding.sliderSniperScope.setValue(finalBundle.getFloat("sniper_scope"));
         binding.textViewFreeReview.setText(getString(R.string.free_review) + ":" + " " + (int) finalBundle.getFloat("free_review"));
         binding.sliderFreeReview.setValue(finalBundle.getFloat("free_review"));
+        binding.textViewFireButton.setText(getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button"));
+        binding.sliderFireButton.setValue(finalBundle.getFloat("fire_button"));
 
         return binding.getRoot();
     }

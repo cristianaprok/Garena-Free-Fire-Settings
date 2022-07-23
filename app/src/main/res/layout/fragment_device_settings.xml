@@ -11,13 +11,23 @@
         android:padding="8dp"
         android:orientation="vertical">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewDPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dpi"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewReview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Review"
+            android:text="@string/review"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderReview"
@@ -26,16 +36,16 @@
             android:value="58.0"
             android:valueFrom="0.0"
             android:valueTo="100.0"
-            android:stepSize="1.0"
             android:enabled="false"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewCollimator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Collimator"
+            android:text="@string/collimator"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderCollimator"
@@ -44,16 +54,16 @@
             android:value="58.0"
             android:valueFrom="0.0"
             android:valueTo="100.0"
-            android:stepSize="1.0"
             android:enabled="false"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewX2Scope"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="x2 Scope"
+            android:text="@string/x2_scope"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderX2Scope"
@@ -62,16 +72,16 @@
             android:value="58.0"
             android:valueFrom="0.0"
             android:valueTo="100.0"
-            android:stepSize="1.0"
             android:enabled="false"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewX4Scope"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="x4 Scope"
+            android:text="@string/x4_scope"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderX4Scope"
@@ -80,16 +90,16 @@
             android:value="58.0"
             android:valueFrom="0.0"
             android:valueTo="100.0"
-            android:stepSize="1.0"
             android:enabled="false"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewSniperScope"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sniper Scope"
+            android:text="@string/sniper_scope"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderSniperScope"
@@ -98,16 +108,16 @@
             android:value="58.0"
             android:valueFrom="0.0"
             android:valueTo="100.0"
-            android:stepSize="1.0"
             android:enabled="false"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewFreeReview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Free Review"
+            android:text="@string/free_review"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
 
         <com.google.android.material.slider.Slider
             android:id="@+id/sliderFreeReview"
@@ -116,7 +126,54 @@
             android:value="58.0"
             android:valueFrom="0.0"
             android:valueTo="100.0"
-            android:stepSize="1.0"
             android:enabled="false"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textViewFireButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fire_button"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderFireButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:value="58.0"
+            android:valueFrom="0.0"
+            android:valueTo="100.0"
+            android:enabled="false"/>
+
+        <com.google.android.material.card.MaterialCardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            style="@style/Widget.Material3.CardView.Filled">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal|center_vertical"
+                    android:padding="4dp"
+                    android:text="@string/copy"
+                    android:textSize="28sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </FrameLayout>
