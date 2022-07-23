@@ -14,4 +14,16 @@
     <string name="dont_have_your_phone_model">Нету модели вашего телефона?</string>
     <string name="then_click_here">Тогда жми сюда!</string>
     <string name="copy">Скопировать</string>
+    <string name="copied">Скопировано</string>
+
+    <string name="about_app">О Приложении</string>
+    <string name="home">Главная</string>
+    <string name="version">Версия</string>
+    <string name="source_code">Исходный Код</string>
+    <string name="ibragim">Ибрагим Мальцагов</string>
+    <string name="write_to_us">Напишите нам</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="rate_the_app">Оценить приложение</string>
+    <string name="we_are_on_vk">Мы в ВКонтакте</string>
+    <string name="other_apps">Другие Приложения</string>
 </resources>

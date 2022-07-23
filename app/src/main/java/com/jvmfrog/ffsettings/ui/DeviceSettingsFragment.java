@@ -1,5 +1,8 @@
 package com.jvmfrog.ffsettings.ui;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentDeviceSettingsBinding;
@@ -43,6 +47,28 @@ public class DeviceSettingsFragment extends Fragment {
         binding.sliderFreeReview.setValue(finalBundle.getFloat("free_review"));
         binding.textViewFireButton.setText(getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button"));
         binding.sliderFireButton.setValue(finalBundle.getFloat("fire_button"));
+
+        binding.copyButton.setOnClickListener(view -> {
+            try {
+                ClipboardManager clipboard = (ClipboardManager)
+                        getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("simple text",
+                        getString(R.string.dpi) + ":" + " " + (int) finalBundle.getFloat("dpi") + "\n" +
+                                getString(R.string.review) + ":" + " " + (int) finalBundle.getFloat("review") + "\n" +
+                                getString(R.string.collimator) + ":" + " " + (int) finalBundle.getFloat("collimator") + "\n" +
+                                getString(R.string.x2_scope) + ":" + " " + (int) finalBundle.getFloat("x2_scope") + "\n" +
+                                getString(R.string.x4_scope) + ":" + " " + (int) finalBundle.getFloat("x4_scope") + "\n" +
+                                getString(R.string.sniper_scope) + ":" + " " + (int) finalBundle.getFloat("sniper_scope") + "\n" +
+                                getString(R.string.free_review) + ":" + " " + (int) finalBundle.getFloat("free_review") + "\n" +
+                                getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button") + "\n");
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(getActivity(), "Скопировано", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getActivity(), "Ошибка: " + e, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return binding.getRoot();
     }

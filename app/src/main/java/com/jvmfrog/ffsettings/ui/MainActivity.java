@@ -1,13 +1,14 @@
 package com.jvmfrog.ffsettings.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 
 import android.os.Bundle;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.R;
-import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -25,5 +27,17 @@ public class MainActivity extends AppCompatActivity {
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        binding.bottomAppBar.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
+                    break;
+                case R.id.about_app:
+                    FragmentUtils.changeFragment(this, new AboutAppFragment(), R.id.frame, null);
+                    break;
+            }
+            return true;
+        });
     }
 }
