@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.jvmfrog.ffsettings"
         minSdk 22
-        targetSdk 32
+        targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,6 +41,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:21.1.0'
     implementation 'com.google.firebase:firebase-firestore:24.2.1'
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.1'
+    implementation 'com.google.firebase:firebase-messaging:23.0.6'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:20.1.2'
+
+    implementation 'androidx.browser:browser:1.4.0'
+    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
