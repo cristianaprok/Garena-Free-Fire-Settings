@@ -20,12 +20,14 @@ import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.ui.DeviceSettingsFragment;
+import com.jvmfrog.ffsettings.ui.MainActivity;
 import com.jvmfrog.ffsettings.utils.AdMobUtil;
+import com.jvmfrog.ffsettings.utils.DialogsUtil;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 
 public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.holder> {
 
-    private Activity activity;
+    private Context context;
     private AdMobUtil adMobUtil;
 
     /**
@@ -34,9 +36,9 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
      *
      * @param options
      */
-    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Activity activity) {
+    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
         super(options);
-        activity = this.activity;
+        context = this.context;
     }
 
     @Override
@@ -44,7 +46,6 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
         holder.device_name.setText(model.getDevice_name());
 
         holder.itemView.setOnClickListener(v -> {
-            adMobUtil.showInterstitialAd(activity.getParent(), "ADMOB");
             Bundle finalBundle = new Bundle();
             finalBundle.putFloat("review", model.getReview());
             finalBundle.putFloat("collimator", model.getCollimator());

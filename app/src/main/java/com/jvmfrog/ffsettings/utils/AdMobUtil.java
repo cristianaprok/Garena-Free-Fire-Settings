@@ -16,7 +16,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 public class AdMobUtil {
 
-    private Activity activity;
+    private Context activity;
     private AdRequest adRequest;
     private InterstitialAd mInterstitialAd;
 
@@ -88,9 +88,9 @@ public class AdMobUtil {
         });
     }
 
-    public void showInterstitialAd(Activity activity, String TAG) {
+    public void showInterstitialAd(Context activity, String TAG) {
         if (mInterstitialAd != null) {
-            mInterstitialAd.show(activity);
+            mInterstitialAd.show((Activity) activity);
         } else {
             Log.d(TAG, "The interstitial ad wasn't ready yet.");
         }

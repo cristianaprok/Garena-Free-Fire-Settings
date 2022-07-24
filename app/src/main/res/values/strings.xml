@@ -25,6 +25,10 @@
     <string name="then_click_here">Then click here</string>
     <string name="copy">Copy</string>
     <string name="copied">Copied</string>
+    <string name="link">Link</string>
+    <string name="copy_link">Copy Link</string>
+    <string name="open_link">Open Link</string>
+    <string name="error">Error</string>
 
     <string name="about_app">About App</string>
     <string name="home">Home</string>

@@ -15,6 +15,10 @@
     <string name="then_click_here">Тогда жми сюда!</string>
     <string name="copy">Скопировать</string>
     <string name="copied">Скопировано</string>
+    <string name="link">Ссылка</string>
+    <string name="copy_link">Копировать ссылку</string>
+    <string name="open_link">Открыть ссылку</string>
+    <string name="error">Ошибка</string>
 
     <string name="about_app">О Приложении</string>
     <string name="home">Главная</string>
