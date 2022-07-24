@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.jvmfrog.ffsettings.adapter.ManufacturersAdapter;
+import com.jvmfrog.ffsettings.utils.AdMobUtil;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.R;
@@ -22,6 +25,9 @@ public class ManufacturerFragment extends Fragment {
 
     private FragmentManufacturerBinding binding;
     private ArrayList<String> arrayList;
+    private AdRequest adRequest;
+    private InterstitialAd mInterstitialAd;
+    private AdMobUtil adMobUtil;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +53,7 @@ public class ManufacturerFragment extends Fragment {
 
         LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         binding.recview.setLayoutManager(layoutManager);
-        ManufacturersAdapter adapter = new ManufacturersAdapter(arrayList, getActivity());
+        ManufacturersAdapter adapter = new ManufacturersAdapter(arrayList);
         binding.recview.setAdapter(adapter);
 
         binding.googleFormBtn.setOnClickListener(view -> {

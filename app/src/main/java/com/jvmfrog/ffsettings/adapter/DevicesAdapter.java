@@ -1,7 +1,9 @@
 package com.jvmfrog.ffsettings.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +15,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.ui.DeviceSettingsFragment;
+import com.jvmfrog.ffsettings.utils.AdMobUtil;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 
 public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.holder> {
 
-    private Context context;
+    private Activity activity;
+    private AdMobUtil adMobUtil;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -28,9 +34,9 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
      *
      * @param options
      */
-    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
+    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Activity activity) {
         super(options);
-        context = this.context;
+        activity = this.activity;
     }
 
     @Override
@@ -38,6 +44,7 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
         holder.device_name.setText(model.getDevice_name());
 
         holder.itemView.setOnClickListener(v -> {
+            adMobUtil.showInterstitialAd(activity.getParent(), "ADMOB");
             Bundle finalBundle = new Bundle();
             finalBundle.putFloat("review", model.getReview());
             finalBundle.putFloat("collimator", model.getCollimator());

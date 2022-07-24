@@ -7,6 +7,11 @@
     <string name="GOOGLE_PLAY" translatable="false">https://play.google.com/store/apps/dev?id=8551876312630719902</string>
     <string name="google_form" translatable="false">https://forms.gle/pudK6cxwW8t4xdcTA</string>
 
+    <string name="admob_app_id" translatable="false">ca-app-pub-4193046598871025~2670224662</string>
+    <string name="admob_interstellar_test_ad_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_reward_test_ad_id" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="admob_interstellar_ad_id" translatable="false">ca-app-pub-4193046598871025/7823313141</string>
+
     <string name="review">Review</string>
     <string name="collimator">Collimator</string>
     <string name="x2_scope">x2 Scope</string>

@@ -1,5 +1,6 @@
 package com.jvmfrog.ffsettings.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,16 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.adapter.DevicesAdapter;
 import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.databinding.FragmentDevicesBinding;
+import com.jvmfrog.ffsettings.utils.AdMobUtil;
 
 public class DevicesFragment extends Fragment {
 
     private FragmentDevicesBinding binding;
     private DevicesAdapter devicesAdapter;
+
+    private AdRequest adRequest;
+    private InterstitialAd mInterstitialAd;
+    private AdMobUtil adMobUtil;
 
     public DevicesFragment() {
         // Required empty public constructor
@@ -35,6 +44,12 @@ public class DevicesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDevicesBinding.inflate(inflater, container, false);
+
+        adRequest = new AdRequest.Builder().build();
+
+        adMobUtil = new AdMobUtil(getActivity(), adRequest, mInterstitialAd);
+        adMobUtil.initAdMob(getActivity(), adRequest);
+        adMobUtil.loadInterstitialAd(getActivity(), getString(R.string.admob_interstellar_test_ad_id), "ADMOB");
 
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());
