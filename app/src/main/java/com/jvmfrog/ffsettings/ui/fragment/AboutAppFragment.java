@@ -1,4 +1,4 @@
-package com.jvmfrog.ffsettings.ui;
+package com.jvmfrog.ffsettings.ui.fragment;
 
 import android.content.Intent;
 import android.net.Uri;

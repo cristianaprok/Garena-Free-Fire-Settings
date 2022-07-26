@@ -1,4 +1,4 @@
-package com.jvmfrog.ffsettings.ui;
+package com.jvmfrog.ffsettings.ui.fragment;
 
 import android.os.Bundle;
 
@@ -46,10 +46,6 @@ public class ManufacturerFragment extends Fragment {
         arrayList.add("iPhone");
         arrayList.add("Xiaomi");
         arrayList.add("Redmi");
-        arrayList.add("PocoPhone");
-        arrayList.add("OnePlus");
-        arrayList.add("Oppo");
-        arrayList.add("Nokia");
 
         LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         binding.recview.setLayoutManager(layoutManager);

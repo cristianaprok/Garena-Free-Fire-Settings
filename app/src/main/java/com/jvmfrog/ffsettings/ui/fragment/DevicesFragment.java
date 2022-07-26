@@ -1,4 +1,4 @@
-package com.jvmfrog.ffsettings.ui;
+package com.jvmfrog.ffsettings.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -26,10 +26,6 @@ public class DevicesFragment extends Fragment {
     private FragmentDevicesBinding binding;
     private DevicesAdapter devicesAdapter;
 
-    private AdRequest adRequest;
-    private InterstitialAd mInterstitialAd;
-    private AdMobUtil adMobUtil;
-
     public DevicesFragment() {
         // Required empty public constructor
     }
@@ -44,12 +40,6 @@ public class DevicesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDevicesBinding.inflate(inflater, container, false);
-
-        adRequest = new AdRequest.Builder().build();
-
-        adMobUtil = new AdMobUtil(getActivity(), adRequest, mInterstitialAd);
-        adMobUtil.initAdMob(getActivity(), adRequest);
-        adMobUtil.loadInterstitialAd(getActivity(), getString(R.string.admob_interstellar_test_ad_id), "ADMOB");
 
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());
