@@ -30,4 +30,7 @@
     <string name="rate_the_app">Оценить приложение</string>
     <string name="we_are_on_vk">Мы в ВКонтакте</string>
     <string name="other_apps">Другие Приложения</string>
+
+    <!--Accessibility-->
+    <string name="copy_settings_button">Кнопка копирования настроек</string>
 </resources>
