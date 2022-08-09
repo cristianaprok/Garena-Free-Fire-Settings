@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +14,6 @@
 
         <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
@@ -37,13 +37,14 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textViewReview"
+                    style="@style/Widget.MaterialComponents.TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/review"
                     android:text="@string/review"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    style="@style/Widget.MaterialComponents.TextView"/>
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/sliderReview"

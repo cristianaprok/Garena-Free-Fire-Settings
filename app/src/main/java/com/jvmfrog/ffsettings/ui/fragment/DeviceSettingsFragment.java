@@ -40,7 +40,12 @@ public class DeviceSettingsFragment extends Fragment {
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());
 
-        binding.textViewDPI.setText(getString(R.string.dpi) + ":" + " " + (int) finalBundle.getFloat("dpi"));
+        if (finalBundle.getFloat("dpi") == 0) {
+            binding.textViewDPI.setVisibility(View.GONE);
+        } else {
+            binding.textViewDPI.setText(getString(R.string.dpi) + ":" + " " + (int) finalBundle.getFloat("dpi"));
+        }
+
         binding.textViewReview.setText(getString(R.string.review) + ":" + " " + (int) finalBundle.getFloat("review"));
         binding.sliderReview.setValue(finalBundle.getFloat("review"));
         binding.textViewCollimator.setText(getString(R.string.collimator) + ":" + " " + (int) finalBundle.getFloat("collimator"));

@@ -5,6 +5,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Build;
 
+import com.google.android.gms.common.util.SharedPreferencesUtils;
+
 public class OtherUtils {
 
     public void copyTextToClipboard(Context context, String text) {
