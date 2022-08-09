@@ -13,6 +13,8 @@ import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
 import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.R;
+import com.jvmfrog.ffsettings.utils.OtherUtils;
+import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,11 +36,8 @@ public class MainActivity extends AppCompatActivity {
         ((MyApplication) application)
                 .showAdIfAvailable(
                         MainActivity.this,
-                        new MyApplication.OnShowAdCompleteListener() {
-                            @Override
-                            public void onShowAdComplete() {
-                                //
-                            }
+                        () -> {
+                            //
                         });
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);

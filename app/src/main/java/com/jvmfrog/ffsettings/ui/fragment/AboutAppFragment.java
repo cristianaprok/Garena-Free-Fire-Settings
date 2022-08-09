@@ -15,6 +15,8 @@ import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentAboutAppBinding;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
+import com.jvmfrog.ffsettings.utils.DevSettingsFragment;
+import com.jvmfrog.ffsettings.utils.FragmentUtils;
 
 public class AboutAppFragment extends Fragment {
 
@@ -31,6 +33,9 @@ public class AboutAppFragment extends Fragment {
         binding = FragmentAboutAppBinding.inflate(inflater, container, false);
 
         binding.appVersionBtn.setText(getString(R.string.version) + ": " + BuildConfig.VERSION_NAME + "(" + BuildConfig.VERSION_CODE + ")");
+        binding.appVersionBtn.setOnClickListener(v -> {
+            FragmentUtils.changeFragment(getActivity(), new DevSettingsFragment(), R.id.frame, null);
+        });
         binding.sourceCodeBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.source_code_url), R.color.md_theme_light_onSecondary));
         binding.ibragimBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.ibragim_url), R.color.md_theme_light_onSecondary));
         binding.mailBtn.setOnClickListener(v -> {

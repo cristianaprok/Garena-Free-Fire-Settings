@@ -47,6 +47,19 @@
 
     <!--Accessibility-->
     <string name="copy_settings_button">Copy settings button</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Preference Titles -->
+    <string name="app_theme" translatable="false">App Theme</string>
+    <string name="sync_header" translatable="false">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="app_theme_title" translatable="false">Default App Theme</string>
+    <string name="dynamic_colors_title" translatable="false">Dynamic Colors</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
 </resources>

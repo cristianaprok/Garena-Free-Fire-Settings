@@ -43,11 +43,7 @@ public class MyApplication extends Application
 
         MobileAds.initialize(
                 this,
-                new OnInitializationCompleteListener() {
-                    @Override
-                    public void onInitializationComplete(
-                            @NonNull InitializationStatus initializationStatus) {}
-                });
+                initializationStatus -> {});
 
         ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
         appOpenAdManager = new AppOpenAdManager();

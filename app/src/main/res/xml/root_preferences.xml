@@ -1,0 +1,33 @@
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/app_theme">
+
+        <ListPreference
+            app:defaultValue="system"
+            app:entries="@array/app_theme_entries"
+            app:entryValues="@array/app_theme_values"
+            app:key="darkMode"
+            app:title="@string/app_theme_title"
+            app:useSimpleSummaryProvider="true"/>
+
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="dynamic_colors"
+            app:title="@string/dynamic_colors_title"
+            app:useSimpleSummaryProvider="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="isAdsShown"
+            app:defaultValue="false"
+            app:title="Show Ads"
+            app:summaryOn="Ads showing"
+            app:summaryOff="Ads not showing"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,5 +1,6 @@
 package com.jvmfrog.ffsettings.utils;
 
+import android.app.UiModeManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
