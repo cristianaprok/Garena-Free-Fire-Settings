@@ -155,7 +155,7 @@ public class MyApplication extends Application
                             loadTime = (new Date()).getTime();
 
                             Log.d(LOG_TAG, "onAdLoaded.");
-                            Toast.makeText(context, "onAdLoaded", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "onAdLoaded", Toast.LENGTH_SHORT).show();
                         }
 
                         /**
@@ -167,7 +167,7 @@ public class MyApplication extends Application
                         public void onAdFailedToLoad(LoadAdError loadAdError) {
                             isLoadingAd = false;
                             Log.d(LOG_TAG, "onAdFailedToLoad: " + loadAdError.getMessage());
-                            Toast.makeText(context, "onAdFailedToLoad", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "onAdFailedToLoad", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -238,7 +238,7 @@ public class MyApplication extends Application
                             isShowingAd = false;
 
                             Log.d(LOG_TAG, "onAdDismissedFullScreenContent.");
-                            Toast.makeText(activity, "onAdDismissedFullScreenContent", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(activity, "onAdDismissedFullScreenContent", Toast.LENGTH_SHORT).show();
 
                             onShowAdCompleteListener.onShowAdComplete();
                             loadAd(activity);
@@ -262,7 +262,7 @@ public class MyApplication extends Application
                         @Override
                         public void onAdShowedFullScreenContent() {
                             Log.d(LOG_TAG, "onAdShowedFullScreenContent.");
-                            Toast.makeText(activity, "onAdShowedFullScreenContent", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(activity, "onAdShowedFullScreenContent", Toast.LENGTH_SHORT).show();
                         }
                     });
 

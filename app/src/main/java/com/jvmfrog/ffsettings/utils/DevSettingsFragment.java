@@ -39,10 +39,13 @@ public class DevSettingsFragment extends PreferenceFragmentCompat
         if (key.equals(darkMode)) {
             String value = name.getString(key, "system");
             if (value.equals("system")) {
+                setDarkMode.setSummary("system");
                 uiManager.setNightMode(UiModeManager.MODE_NIGHT_AUTO);
             } else if (value.equals("dark")) {
+                setDarkMode.setSummary("dark");
                 uiManager.setNightMode(UiModeManager.MODE_NIGHT_YES);
             } else if (value.equals("light")) {
+                setDarkMode.setSummary("light");
                 uiManager.setNightMode(UiModeManager.MODE_NIGHT_NO);
             }
         }
