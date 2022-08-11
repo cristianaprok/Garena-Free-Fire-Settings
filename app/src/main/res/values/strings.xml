@@ -23,6 +23,7 @@
     <string name="free_review">Free Review</string>
     <string name="dpi">DPI</string>
     <string name="fire_button">Fire Button</string>
+    <string name="source">Source:</string>
 
     <string name="dont_have_your_phone_model">Don\'t have your phone model?</string>
     <string name="then_click_here">Then click here</string>
@@ -41,9 +42,11 @@
 
     <string name="write_to_us">Write to us</string>
     <string name="feedback">Feedback</string>
-    <string name="rate_the_app">Rate the app</string>
+    <string name="rate_the_app">Review the app</string>
     <string name="we_are_on_vk">We are on VK</string>
     <string name="other_apps">Other Apps</string>
+
+    <string name="thank_for_review">Thank for review</string>
 
     <!--Accessibility-->
     <string name="copy_settings_button">Copy settings button</string>

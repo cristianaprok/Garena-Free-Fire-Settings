@@ -17,6 +17,7 @@ import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.ui.fragment.DeviceSettingsFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
+import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.holder> {
 

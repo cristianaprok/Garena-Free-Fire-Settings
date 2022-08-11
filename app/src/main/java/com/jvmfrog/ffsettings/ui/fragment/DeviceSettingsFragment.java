@@ -22,6 +22,8 @@ import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentDeviceSettingsBinding;
+import com.jvmfrog.ffsettings.utils.InAppReviewHelper;
+import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class DeviceSettingsFragment extends Fragment {
 
@@ -94,7 +96,6 @@ public class DeviceSettingsFragment extends Fragment {
                 Toast.makeText(getActivity(), "Ошибка: " + e, Toast.LENGTH_SHORT).show();
             }
         });
-
         return binding.getRoot();
     }
 }

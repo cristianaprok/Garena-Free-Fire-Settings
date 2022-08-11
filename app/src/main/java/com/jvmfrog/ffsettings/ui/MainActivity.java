@@ -51,9 +51,10 @@ public class MainActivity extends AppCompatActivity {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        bottomAppBar();
 
         FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
-        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        /*mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
         mFirebaseRemoteConfig.setDefaultsAsync(R.xml.default_remote_configs);
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
                 .setMinimumFetchIntervalInSeconds(3600)
@@ -73,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                     in_app_update_type = FirebaseRemoteConfig.getInstance().getString("in_app_update_type");
-                    checkUpdate(in_app_update_type);
-                });
+                    //checkUpdate(in_app_update_type);
+                });*/
 
         // Show the app open ad
         Application application = getApplication();
@@ -98,19 +99,5 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
-    }
-
-    private void checkUpdate(String in_app_update_type) {
-        if (in_app_update_type.equals("flexible")) {
-            // Initialize the Update Manager with the Activity and the Update Mode
-            mUpdateManager = UpdateManager.Builder(this).mode(UpdateManagerConstant.FLEXIBLE);
-            mUpdateManager.start();
-        } else if (in_app_update_type.equals("immediate")) {
-            // Initialize the Update Manager with the Activity and the Update Mode
-            mUpdateManager = UpdateManager.Builder(this).mode(UpdateManagerConstant.IMMEDIATE);
-            mUpdateManager.start();
-        } else  {
-            //
-        }
     }
 }

@@ -6,206 +6,242 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.DeviceSettingsFragment">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="4dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            style="@style/Widget.Material3.CardView.Filled">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:orientation="vertical">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewDPI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/dpi"
-                    android:text="@string/dpi"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    style="@style/Widget.MaterialComponents.TextView"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewReview"
-                    style="@style/Widget.MaterialComponents.TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/review"
-                    android:text="@string/review"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/sliderReview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/textViewReview"
-                    android:value="58.0"
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0"
-                    android:enabled="false"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewCollimator"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/collimator"
-                    android:text="@string/collimator"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    style="@style/Widget.MaterialComponents.TextView"/>
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/sliderCollimator"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/textViewCollimator"
-                    android:value="58.0"
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0"
-                    android:enabled="false"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewX2Scope"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/x2_scope"
-                    android:text="@string/x2_scope"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    style="@style/Widget.MaterialComponents.TextView"/>
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/sliderX2Scope"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/textViewX2Scope"
-                    android:value="58.0"
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0"
-                    android:enabled="false"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewX4Scope"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/x4_scope"
-                    android:text="@string/x4_scope"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    style="@style/Widget.MaterialComponents.TextView"/>
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/sliderX4Scope"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/textViewX4Scope"
-                    android:value="58.0"
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0"
-                    android:enabled="false"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewSniperScope"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/sniper_scope"
-                    android:text="@string/sniper_scope"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    style="@style/Widget.MaterialComponents.TextView"/>
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/sliderSniperScope"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/textViewSniperScope"
-                    android:value="58.0"
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0"
-                    android:enabled="false"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewFreeReview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/free_review"
-                    android:text="@string/free_review"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    style="@style/Widget.MaterialComponents.TextView"/>
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/sliderFreeReview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/textViewFreeReview"
-                    android:value="58.0"
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0"
-                    android:enabled="false"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewFireButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/fire_button"
-                    android:text="@string/fire_button"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    style="@style/Widget.MaterialComponents.TextView"/>
-
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/sliderFireButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@+id/textViewFireButton"
-                    android:value="58.0"
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0"
-                    android:enabled="false"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/copyButton"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/copy_settings_button"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            style="@style/Widget.Material3.CardView.Filled">
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                style="@style/Widget.Material3.CardView.Filled">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewDPI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/dpi"
+                        android:text="@string/dpi"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        style="@style/Widget.MaterialComponents.TextView"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewReview"
+                        style="@style/Widget.MaterialComponents.TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/review"
+                        android:text="@string/review"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderReview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@+id/textViewReview"
+                        android:value="58.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="100.0"
+                        android:enabled="false"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewCollimator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/collimator"
+                        android:text="@string/collimator"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        style="@style/Widget.MaterialComponents.TextView"/>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderCollimator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@+id/textViewCollimator"
+                        android:value="58.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="100.0"
+                        android:enabled="false"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewX2Scope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/x2_scope"
+                        android:text="@string/x2_scope"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        style="@style/Widget.MaterialComponents.TextView"/>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderX2Scope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@+id/textViewX2Scope"
+                        android:value="58.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="100.0"
+                        android:enabled="false"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewX4Scope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/x4_scope"
+                        android:text="@string/x4_scope"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        style="@style/Widget.MaterialComponents.TextView"/>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderX4Scope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@+id/textViewX4Scope"
+                        android:value="58.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="100.0"
+                        android:enabled="false"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewSniperScope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/sniper_scope"
+                        android:text="@string/sniper_scope"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        style="@style/Widget.MaterialComponents.TextView"/>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderSniperScope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@+id/textViewSniperScope"
+                        android:value="58.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="100.0"
+                        android:enabled="false"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewFreeReview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/free_review"
+                        android:text="@string/free_review"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        style="@style/Widget.MaterialComponents.TextView"/>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderFreeReview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@+id/textViewFreeReview"
+                        android:value="58.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="100.0"
+                        android:enabled="false"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewFireButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/fire_button"
+                        android:text="@string/fire_button"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        style="@style/Widget.MaterialComponents.TextView"/>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderFireButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@+id/textViewFireButton"
+                        android:value="58.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="100.0"
+                        android:enabled="false"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:orientation="vertical">
+                android:paddingHorizontal="14dp"
+                android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|center_horizontal|center_vertical"
-                    android:padding="4dp"
-                    android:text="@string/copy"
-                    android:textSize="28sp"
-                    android:textStyle="bold"/>
+                    android:contentDescription="@string/source"
+                    android:text="@string/source"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    style="@style/Widget.MaterialComponents.TextView"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/Widget.MaterialComponents.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/fire_button"
+                    android:paddingStart="4dp"
+                    android:singleLine="true"
+                    android:text="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:autoLink="web"
+                    android:linksClickable="true"/>
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/copyButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/copy_settings_button"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.Material3.CardView.Filled">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|center_horizontal|center_vertical"
+                        android:padding="4dp"
+                        android:text="@string/copy"
+                        android:textSize="28sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
 </FrameLayout>
