@@ -198,6 +198,7 @@
                     style="@style/Widget.MaterialComponents.TextView"/>
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textViewSettingsSourceUrl"
                     style="@style/Widget.MaterialComponents.TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

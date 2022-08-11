@@ -45,6 +45,7 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
             finalBundle.putFloat("free_review", model.getFree_review());
             finalBundle.putFloat("dpi", model.getDpi());
             finalBundle.putFloat("fire_button", model.getFire_button());
+            finalBundle.putString("settings_source_url", model.getSettings_source_url());
             FragmentUtils.changeFragmentWithBackStack((FragmentActivity) v.getContext(), new DeviceSettingsFragment(), R.id.frame, "back", finalBundle);
         });
     }

@@ -3,8 +3,6 @@ package com.jvmfrog.ffsettings.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import androidx.preference.PreferenceManager;
-
 public class SharedPreferencesUtils {
 
     // create function to save boolean value in shared preference

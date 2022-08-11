@@ -62,6 +62,7 @@ public class DeviceSettingsFragment extends Fragment {
         binding.sliderFreeReview.setValue(finalBundle.getFloat("free_review"));
         binding.textViewFireButton.setText(getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button"));
         binding.sliderFireButton.setValue(finalBundle.getFloat("fire_button"));
+        binding.textViewSettingsSourceUrl.setText(finalBundle.getString("settings_source_url"));
 
         binding.textViewDPI.setContentDescription(getString(R.string.dpi) + ":" + " " + (int) finalBundle.getFloat("dpi"));
         binding.textViewReview.setContentDescription(getString(R.string.review) + ":" + " " + (int) finalBundle.getFloat("review"));
@@ -74,6 +75,7 @@ public class DeviceSettingsFragment extends Fragment {
         binding.textViewSniperScope.setContentDescription(getString(R.string.sniper_scope) + ":" + " " + (int) finalBundle.getFloat("sniper_scope"));
         binding.textViewFreeReview.setContentDescription(getString(R.string.free_review) + ":" + " " + (int) finalBundle.getFloat("free_review"));
         binding.textViewFireButton.setContentDescription(getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button"));
+        binding.textViewSettingsSourceUrl.setContentDescription(finalBundle.getString("settings_source_url"));
 
         binding.copyButton.setOnClickListener(view -> {
             try {

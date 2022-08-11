@@ -34,6 +34,12 @@
 
     <string name="thank_for_review">Спасибо за отзыв :)</string>
 
+    <string name="welcome">Добро Пожаловать!</string>
+    <string name="welcome_message">
+        Спасибо за установку нашего приложения.
+        \nЗдесь вы найдете настройки чувствительности для своего устройства, а если среди настроек нету модели вашего телефона вы запроста можете запросить их.
+    </string>
+
     <!--Accessibility-->
     <string name="copy_settings_button">Кнопка копирования настроек</string>
 </resources>

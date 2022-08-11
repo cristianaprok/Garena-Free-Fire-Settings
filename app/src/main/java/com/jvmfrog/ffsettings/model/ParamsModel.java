@@ -4,11 +4,12 @@ public class ParamsModel {
 
     public ParamsModel() {};
 
-    private String device_name;
+    private String device_name, settings_source_url;
     private int dpi, fire_button, review, collimator, x2_scope, x4_scope, sniper_scope, free_review;
 
-    public ParamsModel(String device_name, int dpi, int fire_button, int review, int collimator, int x2_scope, int x4_scope, int sniper_scope, int free_review) {
+    public ParamsModel(String device_name, String settings_source_url, int dpi, int fire_button, int review, int collimator, int x2_scope, int x4_scope, int sniper_scope, int free_review) {
         this.device_name = device_name;
+        this.settings_source_url = settings_source_url;
         this.dpi = dpi;
         this.fire_button = fire_button;
         this.review = review;
@@ -25,6 +26,14 @@ public class ParamsModel {
 
     public void setDevice_name(String device_name) {
         this.device_name = device_name;
+    }
+
+    public String getSettings_source_url() {
+        return settings_source_url;
+    }
+
+    public void setSettings_source_url(String settings_source_url) {
+        this.settings_source_url = settings_source_url;
     }
 
     public int getDpi() {
