@@ -14,6 +14,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.adapter.DevicesAdapter;
@@ -45,6 +46,11 @@ public class DevicesFragment extends Fragment {
         finalBundle.putAll(getArguments());
 
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        rootRef.setFirestoreSettings(settings);
+
         Query query = rootRef.collection(finalBundle.getString("device"))
                 .orderBy("device_name", Query.Direction.DESCENDING);
 

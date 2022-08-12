@@ -29,7 +29,7 @@
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
 
         <item name="android:statusBarColor">@color/md_theme_dark_background</item>
-        <item name="android:navigationBarColor">#263224</item>
+        <item name="android:navigationBarColor">@color/md_theme_dark_background</item>
     </style>
 
     <style name="Theme.FFSettings.SplashScreen" parent="Theme.SplashScreen">
