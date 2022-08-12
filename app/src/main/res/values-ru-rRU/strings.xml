@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FF Настройки</string>
+    <string name="app_name">Настройки для Free Fire</string>
 
     <string name="review">Обзор</string>
     <string name="collimator">Коллиматор</string>

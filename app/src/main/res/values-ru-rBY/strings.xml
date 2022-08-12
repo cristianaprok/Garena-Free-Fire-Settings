@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Настройкі для Free Fire</string>
+
+    <string name="review">Агляд</string>
+    <string name="collimator">Каліматар</string>
+    <string name="x2_scope">x2 Прыцэл</string>
+    <string name="x4_scope">x4 Прыцэл</string>
+    <string name="sniper_scope">Снайпэрскі прыцэл</string>
+    <string name="free_review">Свабодны Агляд</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Кнопка Агню</string>
+    <string name="source">Крыніца:</string>
+
+    <string name="dont_have_your_phone_model">Няма мадэлі вашага тэлефона?</string>
+    <string name="then_click_here">Тады цісні сюды!</string>
+    <string name="copy">Скапіяваць</string>
+    <string name="copied">Скапіравана</string>
+    <string name="link">Спасылка</string>
+    <string name="copy_link">Капіяваць спасылку</string>
+    <string name="open_link">Адкрыць спасылку</string>
+    <string name="error">Памылка</string>
+
+    <string name="about_app">Аб Дадатку</string>
+    <string name="home">Галоўная</string>
+    <string name="version">Версія</string>
+    <string name="source_code">Зыходны Код</string>
+    <string name="ibragim">Ібрагім Мальцагаў</string>
+    <string name="write_to_us">Напішыце нам</string>
+    <string name="feedback">Зваротная сувязь</string>
+    <string name="rate_the_app">Ацаніць дадатак</string>
+    <string name="we_are_on_vk">Мы ва Укантакце</string>
+    <string name="other_apps">Іншыя Прыкладанні</string>
+
+    <string name="thank_for_review">Дзякуй за водгук :)</string>
+
+    <string name="welcome">Сардэчна запрашаем!</string>
+    <string name="welcome_message">
+        Дзякуй за ўстаноўку нашага прыкладання.
+        \nТут вы знойдзеце настройкі адчувальнасці для сваёй прылады, а калі сярод настроек няма мадэлі вашага тэлефона вы можаце запытаць іх.    </string>
+
+    <!--Accessibility-->
+    <string name="copy_settings_button">Кнопка капіявання налад</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Serbest Ateş Ayarları</string>
+
+    <string name="review">Gözden geçirmek</string>
+    <string name="collimator">Kolimatör</string>
+    <string name="x2_scope">x2 Kapsam</string>
+    <string name="x4_scope">x4 Kapsam</string>
+    <string name="sniper_scope">Keskin nişancı kapsamı</string>
+    <string name="free_review">Ücretsiz İnceleme</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Ateş Düğmesi</string>
+    <string name="source">Kaynak:</string>
+
+    <string name="dont_have_your_phone_model">Telefonunuzun modeli yok mu?</string>
+    <string name="then_click_here">O zaman buraya tıklayın!</string>
+    <string name="copy">Kopyala</string>
+    <string name="copied">Kopyalandı</string>
+    <string name="link">Bağlantı</string>
+    <string name="copy_link">Bağlantıyı kopyala</string>
+    <string name="open_link">Linki açОткрыть ссылку</string>
+    <string name="error">Hata</string>
+
+    <string name="about_app">Uygulama Hakkında</string>
+    <string name="home">Ana ekran</string>
+    <string name="version">Sürüm</string>
+    <string name="source_code">Kaynak</string>
+    <string name="ibragim">İbrahim Maltsagov</string>
+    <string name="write_to_us">Bize yazın</string>
+    <string name="feedback">Geri bildirim</string>
+    <string name="rate_the_app">Uygulamayı oyla</string>
+    <string name="we_are_on_vk">VK\'dayız</string>
+    <string name="other_apps">Diğer uygulamalar</string>
+
+    <string name="thank_for_review">Geri dönüşünüz için teşekkür ederiz :)</string>
+
+    <string name="welcome">Hoş geldin!</string>
+    <string name="welcome_message">
+        Uygulamamızı yüklediğiniz için teşekkür ederiz.
+        \nBurada cihazınızın hassasiyet ayarlarını bulacaksınız ve telefon modeliniz ayarlar arasında değilse talep edebilirsiniz.</string>
+
+    <!--Accessibility-->
+    <string name="copy_settings_button">Ayarları kopyala düğmesi</string>
+</resources>

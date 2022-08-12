@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FF Settings</string>
+    <string name="app_name">Settings for Free Fire</string>
 
     <string name="source_code_url" translatable="false">https://github.com/IbremMiner837/Garena-Free-Fire-Settings</string>
     <string name="ibragim_url" translatable="false">https://github.com/IbremMiner837</string>
@@ -49,10 +49,8 @@
     <string name="thank_for_review">Thank for review</string>
 
     <string name="welcome">Welcome!</string>
-    <string name="welcome_message">
-        Thanks for installing our app.
-        \nHere you will find the sensitivity settings for your device, and if your phone model is not among the settings, you can easily request them.
-    </string>
+    <string name="welcome_message">Thanks for installing our app.
+        \nHere you will find the sensitivity settings for your device, and if your phone model is not among the settings, you can easily request them.</string>
 
     <!--Accessibility-->
     <string name="copy_settings_button">Copy settings button</string>
