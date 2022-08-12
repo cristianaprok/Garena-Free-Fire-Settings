@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private ConsentInformation consentInformation;
     private ConsentForm consentForm;
 
-    private Boolean isFirstOpen = false;
+    private Boolean isFirstOpen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +56,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         bottomAppBar();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        isFirstOpen = SharedPreferencesUtils.getBoolean(this, "isFirstOpen");
         firstOpenDialog();
 
         FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
+
         Application application = getApplication();
         /*mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
         mFirebaseRemoteConfig.setDefaultsAsync(R.xml.default_remote_configs);
@@ -179,10 +182,12 @@ public class MainActivity extends AppCompatActivity {
     public void firstOpenDialog() {
         if (isFirstOpen == false) {
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
             builder.setTitle(R.string.welcome);
             builder.setMessage(R.string.welcome_message);
             builder.setPositiveButton("OK", (dialog, which) -> {
                 isFirstOpen = true;
+                SharedPreferencesUtils.saveBoolean(this, "isFirstOpen", true);
             });
             builder.show();
         }

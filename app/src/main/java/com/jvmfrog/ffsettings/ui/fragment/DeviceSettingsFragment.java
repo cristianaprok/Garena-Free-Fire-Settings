@@ -62,7 +62,13 @@ public class DeviceSettingsFragment extends Fragment {
         binding.sliderFreeReview.setValue(finalBundle.getFloat("free_review"));
         binding.textViewFireButton.setText(getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button"));
         binding.sliderFireButton.setValue(finalBundle.getFloat("fire_button"));
-        binding.textViewSettingsSourceUrl.setText(finalBundle.getString("settings_source_url"));
+
+        if (finalBundle.getString("settings_source_url") == null) {
+            binding.textViewSettingsSourceUrl.setVisibility(View.GONE);
+            binding.textViewSource.setVisibility(View.GONE);
+        } else {
+            binding.textViewSettingsSourceUrl.setText(finalBundle.getString("settings_source_url"));
+        }
 
         binding.textViewDPI.setContentDescription(getString(R.string.dpi) + ":" + " " + (int) finalBundle.getFloat("dpi"));
         binding.textViewReview.setContentDescription(getString(R.string.review) + ":" + " " + (int) finalBundle.getFloat("review"));

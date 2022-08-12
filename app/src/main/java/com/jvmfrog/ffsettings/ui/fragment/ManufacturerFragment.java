@@ -47,6 +47,7 @@ public class ManufacturerFragment extends Fragment {
         arrayList.add("Xiaomi");
         arrayList.add("Redmi");
         arrayList.add("Oppo");
+        arrayList.add("Huawei");
 
         LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         binding.recview.setLayoutManager(layoutManager);
