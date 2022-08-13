@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.google.android.ump:user-messaging-platform:2.0.0'
 
     implementation 'com.github.SanojPunchihewa:InAppUpdater:1.0.5'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-runtime:2.5.1"
