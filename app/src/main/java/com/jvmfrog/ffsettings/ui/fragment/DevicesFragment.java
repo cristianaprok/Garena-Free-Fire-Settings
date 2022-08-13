@@ -17,6 +17,7 @@ import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.adapter.DevicesAdapter;
 import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.databinding.FragmentDevicesBinding;
+import com.jvmfrog.ffsettings.utils.OtherUtils;
 
 public class DevicesFragment extends Fragment {
 
@@ -54,14 +55,12 @@ public class DevicesFragment extends Fragment {
         Query query = rootRef.collection(finalBundle.getString("device"))
                 .orderBy("device_name", Query.Direction.DESCENDING);
 
-        showLoading();
         query.get().addOnCompleteListener(task -> {
             if (task.isComplete() || task.isSuccessful()) {
-
                 if (task.getResult().isEmpty()) {
-                    showLoading();
+                    //showLoading();
                 } else {
-                    hideLoading();
+                    //hideLoading();
                 }
             }
         });

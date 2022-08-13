@@ -10,7 +10,7 @@ android {
         applicationId "com.jvmfrog.ffsettings"
         minSdk 23
         targetSdk 33
-        versionCode 2
+        versionCode 5
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -51,7 +51,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:21.1.0'
     implementation 'com.google.android.ump:user-messaging-platform:2.0.0'
 
-    implementation 'com.github.SanojPunchihewa:InAppUpdater:1.0.5'
+    implementation 'eu.dkaratzas:android-inapp-update:1.0.5'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"

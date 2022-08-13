@@ -1,25 +1,14 @@
 package com.jvmfrog.ffsettings.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
-
 import android.app.Application;
-import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
-
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
-import com.google.android.play.core.appupdate.AppUpdateManager;
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.InstallState;
-import com.google.android.play.core.install.InstallStateUpdatedListener;
-import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.InstallStatus;
-import com.google.android.play.core.tasks.OnCompleteListener;
-import com.google.android.play.core.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.ump.ConsentDebugSettings;
 import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
@@ -34,36 +23,41 @@ import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
 import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.R;
-import com.jvmfrog.ffsettings.utils.OtherUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
-import com.sanojpunchihewa.updatemanager.UpdateManager;
-import com.sanojpunchihewa.updatemanager.UpdateManagerConstant;
 
-public class MainActivity extends AppCompatActivity {
+import eu.dkaratzas.android.inapp.update.Constants;
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
+
+public class MainActivity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler {
 
     private ActivityMainBinding binding;
 
+    private InAppUpdateManager inAppUpdateManager;
+
     private FirebaseAnalytics mFirebaseAnalytics;
+    private FirebaseRemoteConfig mFirebaseRemoteConfig;
     private ConsentInformation consentInformation;
     private ConsentForm consentForm;
 
     private Boolean isFirstOpen;
+    private String inAppUpdateType = "flexible";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isFirstOpen = SharedPreferencesUtils.getBoolean(this, "isFirstOpen");
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         bottomAppBar();
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        isFirstOpen = SharedPreferencesUtils.getBoolean(this, "isFirstOpen");
         firstOpenDialog();
+        initConsent();
 
         FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
 
-        Application application = getApplication();
-        /*mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
         mFirebaseRemoteConfig.setDefaultsAsync(R.xml.default_remote_configs);
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
                 .setMinimumFetchIntervalInSeconds(3600)
@@ -75,17 +69,99 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         boolean updated = task.getResult();
                         Log.d("TAG", "Config params updated: " + updated);
-                        Toast.makeText(MainActivity.this, "Fetch and activate succeeded",
-                                Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Fetch and activate succeeded", Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(MainActivity.this, "Fetch failed",
-                                Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Fetch failed", Toast.LENGTH_SHORT).show();
                     }
-                    in_app_update_type = FirebaseRemoteConfig.getInstance().getString("in_app_update_type");
-                    //checkUpdate(in_app_update_type);
-                });*/
+                    inAppUpdateType = FirebaseRemoteConfig.getInstance().getString("in_app_update_type");
+                });
 
+        inAppUpdateManager = InAppUpdateManager.Builder(this, 999)
+                .resumeUpdates(true) // Resume the update, if the update was stalled. Default is true
+                .mode(Constants.UpdateMode.FLEXIBLE)
+                // default is false. If is set to true you,
+                // have to manage the user confirmation when
+                // you detect the InstallStatus.DOWNLOADED status,
+                .useCustomNotification(true)
+                .handler(this);
+
+        inAppUpdateManager.checkForAppUpdate();
+
+        Application application = getApplication();
+        if (isFirstOpen == true) {
+            // Show the app open ad
+            ((MyApplication) application)
+                    .showAdIfAvailable(
+                            MainActivity.this,
+                            () -> {
+                                //
+                            });
+        }
+
+
+    }
+
+    private void bottomAppBar() {
+        binding.bottomAppBar.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
+                    break;
+                case R.id.about_app:
+                    FragmentUtils.changeFragment(this, new AboutAppFragment(), R.id.frame, null);
+                    break;
+            }
+            return true;
+        });
+    }
+
+    private void firstOpenDialog() {
+        if (isFirstOpen == false) {
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
+            builder.setTitle(R.string.welcome);
+            builder.setMessage(R.string.welcome_message);
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                isFirstOpen = true;
+                SharedPreferencesUtils.saveBoolean(this, "isFirstOpen", true);
+            });
+            builder.show();
+        }
+    }
+
+    @Override
+    public void onInAppUpdateError(int code, Throwable error) {
+
+    }
+
+    @Override
+    public void onInAppUpdateStatus(InAppUpdateStatus status) {
+        /*
+         * If the update downloaded, ask user confirmation and complete the update
+         */
+
+        if (status.isDownloaded()) {
+
+            View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+
+            Snackbar snackbar = Snackbar.make(rootView,
+                    "An update has just been downloaded.",
+                    Snackbar.LENGTH_INDEFINITE);
+
+            snackbar.setAction("RESTART", view -> {
+
+                // Triggers the completion of the update of the app for the flexible flow.
+                inAppUpdateManager.completeUpdate();
+
+            });
+
+            snackbar.show();
+
+        }
+    }
+
+    private void initConsent() {
         // Set tag for underage of consent. false means users are not underage.
         ConsentRequestParameters params = new ConsentRequestParameters
                 .Builder()
@@ -121,42 +197,16 @@ public class MainActivity extends AppCompatActivity {
                     // Handle the error.
                 }
         );
-
-        if (isFirstOpen == true) {
-            // Show the app open ad
-            ((MyApplication) application)
-                    .showAdIfAvailable(
-                            MainActivity.this,
-                            () -> {
-                                //
-                            });
-        }
-
-
     }
 
-    private void bottomAppBar() {
-        binding.bottomAppBar.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home:
-                    FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
-                    break;
-                case R.id.about_app:
-                    FragmentUtils.changeFragment(this, new AboutAppFragment(), R.id.frame, null);
-                    break;
-            }
-            return true;
-        });
-    }
-
-    public void loadForm() {
+    private void loadForm() {
         UserMessagingPlatform.loadConsentForm(
                 this,
                 consentForm -> {
                     MainActivity.this.consentForm = consentForm;
                     if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.UNKNOWN) {
                         consentForm.show(
-                                MainActivity.this,
+                                this,
                                 formError -> {
                                     // Handle dismissal by reloading form.
                                     loadForm();
@@ -165,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.REQUIRED) {
                         consentForm.show(
-                                MainActivity.this,
+                                this,
                                 formError -> {
                                     // Handle dismissal by reloading form.
                                     loadForm();
@@ -177,19 +227,5 @@ public class MainActivity extends AppCompatActivity {
                     // Handle the error
                 }
         );
-    }
-
-    public void firstOpenDialog() {
-        if (isFirstOpen == false) {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
-            builder.setTitle(R.string.welcome);
-            builder.setMessage(R.string.welcome_message);
-            builder.setPositiveButton("OK", (dialog, which) -> {
-                isFirstOpen = true;
-                SharedPreferencesUtils.saveBoolean(this, "isFirstOpen", true);
-            });
-            builder.show();
-        }
     }
 }
