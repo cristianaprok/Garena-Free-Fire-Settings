@@ -4,8 +4,8 @@ public class ParamsModel {
 
     public ParamsModel() {};
 
-    private String device_name, settings_source_url;
-    private int dpi, fire_button, review, collimator, x2_scope, x4_scope, sniper_scope, free_review;
+    public String device_name, settings_source_url;
+    public int dpi, fire_button, review, collimator, x2_scope, x4_scope, sniper_scope, free_review;
 
     public ParamsModel(String device_name, String settings_source_url, int dpi, int fire_button, int review, int collimator, int x2_scope, int x4_scope, int sniper_scope, int free_review) {
         this.device_name = device_name;

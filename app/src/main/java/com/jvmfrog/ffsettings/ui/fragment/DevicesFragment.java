@@ -55,12 +55,13 @@ public class DevicesFragment extends Fragment {
         Query query = rootRef.collection(finalBundle.getString("device"))
                 .orderBy("device_name", Query.Direction.DESCENDING);
 
+        showLoading();
         query.get().addOnCompleteListener(task -> {
             if (task.isComplete() || task.isSuccessful()) {
                 if (task.getResult().isEmpty()) {
-                    //showLoading();
+                    showLoading();
                 } else {
-                    //hideLoading();
+                    hideLoading();
                 }
             }
         });
