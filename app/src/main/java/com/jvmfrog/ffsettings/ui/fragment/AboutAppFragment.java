@@ -15,6 +15,7 @@ import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentAboutAppBinding;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
+import com.jvmfrog.ffsettings.utils.OtherUtils;
 
 public class AboutAppFragment extends Fragment {
 
@@ -49,9 +50,11 @@ public class AboutAppFragment extends Fragment {
                         "No email clients installed.", Toast.LENGTH_SHORT).show();
             }
         });
+        binding.rateBtn.setOnClickListener(v -> {
+            OtherUtils.reviewAppInGooglePlay(getActivity());
+        });
         binding.vkGroupBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.JVMFrog), R.color.md_theme_light_onSecondary));
         binding.otherAppsBtn.setOnClickListener(view1 -> {
-            final String appPackageName = getContext().getPackageName();
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:JVMFrog")));
             } catch (android.content.ActivityNotFoundException anfe) {

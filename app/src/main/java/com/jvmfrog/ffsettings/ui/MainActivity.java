@@ -1,21 +1,17 @@
 package com.jvmfrog.ffsettings.ui;
 
-import static com.google.android.play.core.install.model.ActivityResult.RESULT_IN_APP_UPDATE_FAILED;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.InstallState;
@@ -23,6 +19,10 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.android.ump.ConsentDebugSettings;
 import com.google.android.ump.ConsentForm;
@@ -30,8 +30,6 @@ import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
@@ -44,14 +42,17 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
-    private FirebaseAnalytics mFirebaseAnalytics;
     private ConsentInformation consentInformation;
     private ConsentForm consentForm;
 
     private Boolean isFirstOpen;
-    private String inAppUpdateType = "flexible";
-    public static int UPDATE_CODE = 100;
-    AppUpdateManager appUpdateManager;
+    private int showReviewCount = 0;
+
+    private ReviewManager reviewManager;
+    private ReviewInfo reviewlnfo;
+
+    private static int UPDATE_CODE = 100;
+    private AppUpdateManager appUpdateManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,20 +64,17 @@ public class MainActivity extends AppCompatActivity {
         bottomAppBar();
         firstOpenDialog();
         initConsent();
+        getReviewInfo();
 
         FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
-
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        startReviewFlow();
 
         Application application = getApplication();
         if (isFirstOpen == true) {
             // Show the app open ad
-            ((MyApplication) application)
-                    .showAdIfAvailable(
-                            MainActivity.this,
-                            () -> {
-                                //
-                            });
+            ((MyApplication) application).showAdIfAvailable(MainActivity.this, () -> {
+                //
+            });
         }
     }
 
@@ -244,5 +242,28 @@ public class MainActivity extends AppCompatActivity {
         });
         //snackbar.setActionTextColor(getResources().getColor(R.color.install_color));
         snackbar.show();
+    }
+
+    private void getReviewInfo() {
+        reviewManager = ReviewManagerFactory.create(getApplicationContext());
+        Task<ReviewInfo> manager = reviewManager.requestReviewFlow();
+        manager.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                reviewlnfo = task.getResult();
+            } else {
+                Toast.makeText(getApplicationContext(), "In App Rating failed get", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void startReviewFlow() {
+        showReviewCount += 1;
+        Task<Void> flow = reviewManager.launchReviewFlow(this, reviewlnfo);
+        flow.addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(Task<Void> task) {
+                Toast.makeText(getApplicationContext(), "In App Rating complete", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
