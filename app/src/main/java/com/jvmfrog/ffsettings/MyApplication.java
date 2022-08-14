@@ -109,7 +109,7 @@ public class MyApplication extends Application
     }
 
     /** Inner class that loads and shows app open ads. */
-    private class AppOpenAdManager {
+    private static class AppOpenAdManager {
 
         private static final String LOG_TAG = "AppOpenAdManager";
         private static final String AD_UNIT_ID = "ca-app-pub-4193046598871025/7460189368";
@@ -150,7 +150,7 @@ public class MyApplication extends Application
                          * @param ad the loaded app open ad.
                          */
                         @Override
-                        public void onAdLoaded(AppOpenAd ad) {
+                        public void onAdLoaded(@NonNull AppOpenAd ad) {
                             appOpenAd = ad;
                             isLoadingAd = false;
                             loadTime = (new Date()).getTime();
@@ -165,7 +165,7 @@ public class MyApplication extends Application
                          * @param loadAdError the error.
                          */
                         @Override
-                        public void onAdFailedToLoad(LoadAdError loadAdError) {
+                        public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                             isLoadingAd = false;
                             Log.d(LOG_TAG, "onAdFailedToLoad: " + loadAdError.getMessage());
                             //Toast.makeText(context, "onAdFailedToLoad", Toast.LENGTH_SHORT).show();
@@ -196,11 +196,8 @@ public class MyApplication extends Application
         private void showAdIfAvailable(@NonNull final Activity activity) {
             showAdIfAvailable(
                     activity,
-                    new OnShowAdCompleteListener() {
-                        @Override
-                        public void onShowAdComplete() {
-                            // Empty because the user will go back to the activity that shows the ad.
-                        }
+                    () -> {
+                        // Empty because the user will go back to the activity that shows the ad.
                     });
         }
 
@@ -247,7 +244,7 @@ public class MyApplication extends Application
 
                         /** Called when fullscreen content failed to show. */
                         @Override
-                        public void onAdFailedToShowFullScreenContent(AdError adError) {
+                        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                             appOpenAd = null;
                             isShowingAd = false;
 

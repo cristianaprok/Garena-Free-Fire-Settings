@@ -1,14 +1,15 @@
 package com.jvmfrog.ffsettings.ui;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.splashscreen.SplashScreen;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
@@ -25,17 +26,15 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.android.ump.ConsentDebugSettings;
-import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.jvmfrog.ffsettings.MyApplication;
+import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
 import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
-import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     private ConsentInformation consentInformation;
-    private ConsentForm consentForm;
 
     private Boolean isFirstOpen;
     private int showReviewCount = 0;
@@ -51,28 +49,26 @@ public class MainActivity extends AppCompatActivity {
     private ReviewManager reviewManager;
     private ReviewInfo reviewlnfo;
 
-    private static int UPDATE_CODE = 100;
+    private static final int UPDATE_CODE = 100;
     private AppUpdateManager appUpdateManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         isFirstOpen = SharedPreferencesUtils.getBoolean(this, "isFirstOpen");
+        showReviewCount = SharedPreferencesUtils.getInteger(this, "showReviewCount");
+        Application application = getApplication();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
         bottomAppBar();
         firstOpenDialog();
         initConsent();
         getReviewInfo();
 
-        FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
-        startReviewFlow();
-
-        Application application = getApplication();
-        if (isFirstOpen == true) {
-            // Show the app open ad
-            ((MyApplication) application).showAdIfAvailable(MainActivity.this, () -> {
+        if (isFirstOpen) {
+            ((MyApplication) application).showAdIfAvailable(this, () -> {
                 //
             });
         }
@@ -93,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void firstOpenDialog() {
-        if (isFirstOpen == false) {
+        if (!isFirstOpen) {
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
             builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
             builder.setTitle(R.string.welcome);
@@ -108,68 +104,39 @@ public class MainActivity extends AppCompatActivity {
 
     private void initConsent() {
         // Set tag for underage of consent. false means users are not underage.
-        ConsentRequestParameters params = new ConsentRequestParameters
-                .Builder()
+        ConsentRequestParameters params = new ConsentRequestParameters.Builder()
                 .setAdMobAppId(getString(R.string.admob_app_id))
                 .setTagForUnderAgeOfConsent(false)
                 .build();
 
         // Debug settings for Form
         ConsentDebugSettings debugSettings = new ConsentDebugSettings.Builder(this)
-                .setDebugGeography(ConsentDebugSettings
-                        .DebugGeography
-                        .DEBUG_GEOGRAPHY_EEA)
+                .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
                 .addTestDeviceHashedId("AF0F2B6E3BCDC6ACBFD315C64B00")
                 .build();
 
-        ConsentRequestParameters debugParams = new ConsentRequestParameters
-                .Builder()
+        ConsentRequestParameters debugParams = new ConsentRequestParameters.Builder()
                 .setConsentDebugSettings(debugSettings)
                 .build();
 
         consentInformation = UserMessagingPlatform.getConsentInformation(this);
-        consentInformation.requestConsentInfoUpdate(
-                this,
-                params,
-                () -> {
+        consentInformation.requestConsentInfoUpdate(this, params, () -> {
                     // The consent information state was updated.
                     // You are now ready to check if a form is available.
                     if (consentInformation.isConsentFormAvailable()) {
-                        loadForm();
-                    }
-                },
-                formError -> {
-                    // Handle the error.
-                }
-        );
-    }
-    private void loadForm() {
-        UserMessagingPlatform.loadConsentForm(
-                this,
-                consentForm -> {
-                    MainActivity.this.consentForm = consentForm;
-                    if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.UNKNOWN) {
-                        consentForm.show(
-                                this,
-                                formError -> {
-                                    // Handle dismissal by reloading form.
-                                    loadForm();
+                        UserMessagingPlatform.loadConsentForm(this, consentForm -> {
+                                    if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.UNKNOWN) {
+                                        consentForm.show(this, formError -> initConsent());
+                                    }
+                                    if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.REQUIRED) {
+                                        consentForm.show(this, formError -> initConsent());
+                                    }
+                                }, formError -> {
+                                    // Handle the error
                                 }
                         );
                     }
-                    if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.REQUIRED) {
-                        consentForm.show(
-                                this,
-                                formError -> {
-                                    // Handle dismissal by reloading form.
-                                    loadForm();
-                                }
-                        );
-                    }
-                },
-                formError -> {
-                    // Handle the error
-                }
+                }, formError -> {/*Handle the error*/}
         );
     }
 
@@ -192,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED){
                 popupSnackbarForCompleteUpdate();
             } else {
-                Log.e("TAG", "checkForAppUpdateAvailability: something else");
+                Log.e("In-App Update: ", "check for app update availability: something else");
             }
         });
     }
@@ -205,19 +172,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    InstallStateUpdatedListener installStateUpdatedListener = new
-            InstallStateUpdatedListener() {
+    InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
                 @Override
                 public void onStateUpdate(InstallState state) {
                     if (state.installStatus() == InstallStatus.DOWNLOADED){
-                        //CHECK THIS if AppUpdateType.FLEXIBLE, otherwise you can skip
                         popupSnackbarForCompleteUpdate();
                     } else if (state.installStatus() == InstallStatus.INSTALLED){
                         if (appUpdateManager != null){
                             appUpdateManager.unregisterListener(installStateUpdatedListener);
                         }
                     } else {
-                        Log.i("TAG", "InstallStateUpdatedListener: state: " + state.installStatus());
+                        Log.d("In-App Update: ", "install state updated listener: state: " + state.installStatus());
                     }
                 }
             };
@@ -225,10 +190,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == UPDATE_CODE) {
             if (resultCode != RESULT_OK) {
-                Log.e("TAG", "onActivityResult: app download failed");
+                Log.e("In-App Update: ", "on activity result: app download failed");
             }
         }
     }
@@ -251,19 +215,18 @@ public class MainActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 reviewlnfo = task.getResult();
             } else {
-                Toast.makeText(getApplicationContext(), "In App Rating failed get", Toast.LENGTH_LONG).show();
+                Log.d("In-App Review: ", "in-app review failed get");
             }
         });
     }
-
     public void startReviewFlow() {
         showReviewCount += 1;
-        Task<Void> flow = reviewManager.launchReviewFlow(this, reviewlnfo);
-        flow.addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(Task<Void> task) {
-                Toast.makeText(getApplicationContext(), "In App Rating complete", Toast.LENGTH_LONG).show();
-            }
-        });
+        SharedPreferencesUtils.saveInteger(this, "showReviewCount", showReviewCount);
+        if (showReviewCount <= 16) {
+            Task<Void> flow = reviewManager.launchReviewFlow(this, reviewlnfo);
+            flow.addOnCompleteListener(task -> Log.d("In-App Review: ", "in-app review complete"));
+        } else if (showReviewCount <= 64) {
+            SharedPreferencesUtils.saveInteger(this, "showReviewCount", 0);
+        }
     }
 }

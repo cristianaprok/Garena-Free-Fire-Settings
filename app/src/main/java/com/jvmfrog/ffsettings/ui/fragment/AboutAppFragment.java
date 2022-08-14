@@ -50,9 +50,7 @@ public class AboutAppFragment extends Fragment {
                         "No email clients installed.", Toast.LENGTH_SHORT).show();
             }
         });
-        binding.rateBtn.setOnClickListener(v -> {
-            OtherUtils.reviewAppInGooglePlay(getActivity());
-        });
+        binding.rateBtn.setOnClickListener(v -> OtherUtils.reviewAppInGooglePlay(getActivity()));
         binding.vkGroupBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.JVMFrog), R.color.md_theme_light_onSecondary));
         binding.otherAppsBtn.setOnClickListener(view1 -> {
             try {

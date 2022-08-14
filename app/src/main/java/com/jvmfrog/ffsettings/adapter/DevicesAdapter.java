@@ -1,6 +1,5 @@
 package com.jvmfrog.ffsettings.adapter;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +19,7 @@ import com.jvmfrog.ffsettings.utils.FragmentUtils;
 
 public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.holder> {
 
-    /**
-     * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
-     * FirestoreRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
+    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options) {
         super(options);
     }
 
@@ -52,16 +45,12 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
     @NonNull
     @Override
     public DevicesAdapter.holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item, parent, false);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         return new holder(view);
     }
 
-    class holder extends RecyclerView.ViewHolder {
-
+    static class holder extends RecyclerView.ViewHolder {
         TextView device_name;
-
         public holder(@NonNull View itemView) {
             super(itemView);
             device_name = itemView.findViewById(R.id.categories);

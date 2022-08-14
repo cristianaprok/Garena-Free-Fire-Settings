@@ -1,6 +1,9 @@
 package com.jvmfrog.ffsettings.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +23,9 @@ public class DeviceSettingsFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDeviceSettingsBinding.inflate(inflater, container, false);
 
@@ -70,7 +74,7 @@ public class DeviceSettingsFragment extends Fragment {
         binding.copyButton.setOnClickListener(view -> {
 
             try {
-                new OtherUtils().copyTextToClipboard(getActivity(),
+                OtherUtils.copyTextToClipboard(getActivity(),
                         getString(R.string.dpi) + ":" + " " + dpi + "\n" +
                                 getString(R.string.review) + ":" + " " + (int) finalBundle.getFloat("review") + "\n" +
                                 getString(R.string.collimator) + ":" + " " + (int) finalBundle.getFloat("collimator") + "\n" +
@@ -81,7 +85,6 @@ public class DeviceSettingsFragment extends Fragment {
                                 getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button") + "\n" +
                                 getString(R.string.source) + " " + finalBundle.getString("settings_source_url")
                         );
-
                 Toast.makeText(getActivity(), "Скопировано", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();

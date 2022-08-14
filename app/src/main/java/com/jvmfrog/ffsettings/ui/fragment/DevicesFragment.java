@@ -2,6 +2,7 @@ package com.jvmfrog.ffsettings.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -36,7 +37,7 @@ public class DevicesFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDevicesBinding.inflate(inflater, container, false);
 
@@ -71,7 +72,7 @@ public class DevicesFragment extends Fragment {
                         .build();
 
         binding.recview.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        devicesAdapter = new DevicesAdapter(options, getActivity());
+        devicesAdapter = new DevicesAdapter(options);
         binding.recview.setAdapter(devicesAdapter);
 
         return binding.getRoot();

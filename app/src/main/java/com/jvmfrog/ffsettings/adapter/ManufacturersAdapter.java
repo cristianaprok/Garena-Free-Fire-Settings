@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdapter.holder> {
 
-    private ArrayList<String> arrayList;
+    private final ArrayList<String> arrayList;
 
     public ManufacturersAdapter(ArrayList<String> arrayList) {
         this.arrayList = arrayList;
@@ -38,10 +38,9 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
 
     @Override
     public void onBindViewHolder(@NonNull ManufacturersAdapter.holder holder, int position) {
-        holder.device_name.setText(arrayList.get(position).toString());
+        holder.device_name.setText(arrayList.get(position));
 
         Bundle finalBundle = new Bundle();
-
         holder.itemView.setOnClickListener(view -> {
             switch (position) {
                 case 0:
@@ -77,10 +76,8 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
         return arrayList.toArray().length;
     }
 
-    public class holder extends RecyclerView.ViewHolder {
-
+    public static class holder extends RecyclerView.ViewHolder {
         TextView device_name;
-
         public holder(@NonNull View itemView) {
             super(itemView);
             device_name = itemView.findViewById(R.id.categories);

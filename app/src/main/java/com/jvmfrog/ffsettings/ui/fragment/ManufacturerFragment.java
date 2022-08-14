@@ -2,6 +2,7 @@ package com.jvmfrog.ffsettings.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,13 +26,11 @@ public class ManufacturerFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentManufacturerBinding.inflate(inflater, container, false);
 
-        Bundle finalBundle = new Bundle();
-
-        arrayList = new ArrayList<String>();
+        arrayList = new ArrayList<>();
         arrayList.add("Samsung");
         arrayList.add("iPhone");
         arrayList.add("Xiaomi");
@@ -44,9 +43,7 @@ public class ManufacturerFragment extends Fragment {
         ManufacturersAdapter adapter = new ManufacturersAdapter(arrayList);
         binding.recview.setAdapter(adapter);
 
-        binding.googleFormBtn.setOnClickListener(view -> {
-            new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary);
-        });
+        binding.googleFormBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
 
         return binding.getRoot();
     }
