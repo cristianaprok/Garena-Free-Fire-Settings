@@ -17,7 +17,6 @@ import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.adapter.DevicesAdapter;
 import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.databinding.FragmentDevicesBinding;
-import com.jvmfrog.ffsettings.utils.OtherUtils;
 
 public class DevicesFragment extends Fragment {
 

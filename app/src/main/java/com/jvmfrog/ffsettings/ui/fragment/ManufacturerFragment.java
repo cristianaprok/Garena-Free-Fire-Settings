@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.jvmfrog.ffsettings.adapter.ManufacturersAdapter;
-import com.jvmfrog.ffsettings.utils.AdMobUtil;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
-import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
 

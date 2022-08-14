@@ -15,7 +15,6 @@ import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentAboutAppBinding;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
-import com.jvmfrog.ffsettings.utils.InAppReviewHelper;
 
 public class AboutAppFragment extends Fragment {
 
