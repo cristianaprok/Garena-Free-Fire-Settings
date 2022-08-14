@@ -32,6 +32,7 @@
         <item name="android:navigationBarColor">@color/md_theme_dark_background</item>
 
         <item name="SpinKit_Color">@color/md_theme_dark_onSurfaceVariant</item>
+        <item name="materialAlertDialogTheme">@style/Theme.FFSettings.MaterialAlertDialog</item>
     </style>
 
     <style name="Theme.FFSettings.SplashScreen" parent="Theme.SplashScreen">
@@ -47,5 +48,9 @@
         <!-- Set the theme of the Activity that directly follows your splash screen. -->
         <!-- Required -->
         <item name="postSplashScreenTheme">@style/Theme.FFSettings</item>
+    </style>
+
+    <style name="Theme.FFSettings.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:tint">@color/md_theme_dark_onSurface</item>
     </style>
 </resources>

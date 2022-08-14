@@ -32,6 +32,8 @@
     <string name="we_are_on_vk">Мы в ВКонтакте</string>
     <string name="other_apps">Другие Приложения</string>
 
+    <string name="update_available">Доступно обновление!</string>
+    <string name="install">Установить</string>
     <string name="thank_for_review">Спасибо за отзыв :)</string>
 
     <string name="welcome">Добро Пожаловать!</string>

@@ -5,7 +5,7 @@
     <string name="ibragim_url" translatable="false">https://github.com/IbremMiner837</string>
     <string name="JVMFrog" translatable="false">https://vk.com/jvmfrog</string>
     <string name="GOOGLE_PLAY" translatable="false">https://play.google.com/store/apps/dev?id=8551876312630719902</string>
-    <string name="google_form" translatable="false">https://forms.gle/pudK6cxwW8t4xdcTA</string>
+    <string name="google_form" translatable="false">https://forms.gle/4HcvAjPVC1ogNcRS8</string>
     <string name="email" translatable="false">ibremminer837.dev@gmail.com</string>
 
     <string name="admob_app_id" translatable="false">ca-app-pub-4193046598871025~2670224662</string>
@@ -46,6 +46,8 @@
     <string name="we_are_on_vk">We are on VK</string>
     <string name="other_apps">Other Apps</string>
 
+    <string name="update_available">Update Available!</string>
+    <string name="install">Install</string>
     <string name="thank_for_review">Thank for review</string>
 
     <string name="welcome">Welcome!</string>

@@ -3,8 +3,10 @@ package com.jvmfrog.ffsettings.ui;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void firstOpenDialog() {
         if (!isFirstOpen) {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(new ContextThemeWrapper(this, R.style.Theme_FFSettings_MaterialAlertDialog));
             builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
             builder.setTitle(R.string.welcome);
             builder.setMessage(R.string.welcome_message);
@@ -198,13 +200,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void popupSnackbarForCompleteUpdate() {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "New app is ready!", Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction("Install", view -> {
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), R.string.update_available, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(R.string.install, view -> {
             if (appUpdateManager != null){
                 appUpdateManager.completeUpdate();
             }
         });
-        //snackbar.setActionTextColor(getResources().getColor(R.color.install_color));
+        snackbar.setActionTextColor(Color.parseColor("#FF3F9F45"));
         snackbar.show();
     }
 

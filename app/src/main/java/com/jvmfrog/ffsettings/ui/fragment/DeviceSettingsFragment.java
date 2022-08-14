@@ -1,6 +1,7 @@
 package com.jvmfrog.ffsettings.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentDeviceSettingsBinding;
 import com.jvmfrog.ffsettings.utils.OtherUtils;
@@ -28,6 +31,11 @@ public class DeviceSettingsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDeviceSettingsBinding.inflate(inflater, container, false);
+
+        Application application = getActivity().getApplication();
+        ((MyApplication) application).showAdIfAvailable(getActivity(), () -> {
+            //
+        });
 
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());

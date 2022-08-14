@@ -30,7 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|center_horizontal|center_vertical"
-                    android:padding="4dp"
+                    android:padding="8dp"
                     android:text="@string/dont_have_your_phone_model"
                     android:textSize="28sp"
                     android:textStyle="bold" />

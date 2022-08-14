@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Налаштування для Free Fire</string>
+
     <string name="review">Огляд</string>
     <string name="collimator">Коліматор</string>
     <string name="x2_scope">x2 Приціл</string>
@@ -10,13 +11,16 @@
     <string name="dpi">DPI</string>
     <string name="fire_button">Кнопка Вогню</string>
     <string name="source">Джерело:</string>
+
     <string name="dont_have_your_phone_model">Немає моделі вашого телефону?</string>
     <string name="then_click_here">Тоді тисни сюди!</string>
+
     <string name="copy">Копіювати</string>
     <string name="copied">Скопійовано</string>
     <string name="link">Посилання</string>
     <string name="copy_link">Копіювати посилання</string>
     <string name="open_link">Відкрити посилання</string>
+
     <string name="error">Помилка</string>
     <string name="about_app">Про додаток</string>
     <string name="home">Головна</string>
@@ -28,7 +32,11 @@
     <string name="rate_the_app">Оцініть програму</string>
     <string name="we_are_on_vk">Ми в ВКонтакте</string>
     <string name="other_apps">Інші програми</string>
+
+    <string name="update_available">Доступне оновлення!</string>
+    <string name="install">Встановити</string>
     <string name="thank_for_review">Дякуємо за відгук :)</string>
+
     <string name="welcome">Ласкаво просимо!</string>
     <string name="welcome_message">Дякуємо, що встановили наш додаток.
         \nТут ви знайдете налаштування чутливості для вашого пристрою, і якщо вашої моделі телефону немає серед налаштувань, ви можете запросити їх.</string>
