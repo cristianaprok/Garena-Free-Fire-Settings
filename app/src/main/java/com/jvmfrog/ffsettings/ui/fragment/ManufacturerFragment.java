@@ -5,27 +5,19 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.jvmfrog.ffsettings.adapter.ManufacturersAdapter;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
-
 import java.util.ArrayList;
 
 public class ManufacturerFragment extends Fragment {
 
     private FragmentManufacturerBinding binding;
     private ArrayList<String> arrayList;
-    private AdRequest adRequest;
-    private InterstitialAd mInterstitialAd;
-    private AdMobUtil adMobUtil;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

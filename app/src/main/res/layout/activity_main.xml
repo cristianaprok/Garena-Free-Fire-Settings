@@ -27,7 +27,6 @@
             android:textSize="28sp"
             android:textStyle="bold"/>
     </com.google.android.material.card.MaterialCardView>
-
 </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
